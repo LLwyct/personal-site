@@ -9,7 +9,7 @@
  */
 
 html {
-  line-height: 1.15; /* 1 */
+  line-height: 1.15;
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
@@ -22,6 +22,9 @@ html {
 
 body {
   margin: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /**
@@ -350,18 +353,36 @@ template {
 
 
 /* customs */
-html, body {
-    height: 100%;
+
+html {
+    font-size: 62.5%;
     font-family: -apple-system, 'Poppins', Roboto, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+@media only screen and (max-width: 640px) {
+  html {
+    font-size: 50%;
+  }
+}
+
 @font-face {
-    font-family: "Poppins";
-    src: url(../fonts/Poppins/Poppins-Medium.ttf),
-        url(../fonts/Poppins/Poppins-Regular.ttf);
+  font-family: "Poppins";
+  src: url(../fonts/Poppins/Poppins-Regular.ttf),
+  url(../fonts/Poppins/Poppins-Medium.ttf);
 }
 
 body {
+    height: 100%;
     min-height: 100vh;
     background: #fcfbfa;
+    font-size: 2em;
+    line-height: 1.5em;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+p, div, a, h1, h2, h3, h4, h5 ,h6 {
+  transition: font-size ease 0.2s;
 }

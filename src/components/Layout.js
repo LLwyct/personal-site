@@ -7,14 +7,15 @@ export default function Layout({children}) {
     const contentstyle = css`
         max-width: 800px;
         margin: 0 auto;
+        padding: 0 1em;
     `;
 
     return (
-        <main>
+        <>
             <Header></Header>
-            <section css={contentstyle}>
+            <main css={contentstyle}>
                 {children}
-            </section>
-        </main>
+            </main>
+        </>
     )
 }

@@ -4,15 +4,29 @@ import { css } from '@emotion/react';
 
 
 export default function Header() {
+    const emojiList = ['😘','😛','🤣','😁','😜','😝','😲','🤪','🤠','🤡','😅'];
+    return (
+        <header css={headerstyle}>
+            <h1>LLwyct <span role="img" aria-label="welcome">{emojiList[Math.floor(Math.random()*(emojiList.length))]}</span></h1>
+            <nav>
+                <ul css={header_ul}>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/about">About</Link></li>
+                    <li><Link to="/articles">Articles</Link></li>
+                </ul>
+            </nav>
+        </header>
+    )
+}
 
-    const headerstyle = css`
+const headerstyle = css`
         max-width: 800px;
         margin: 0 auto;
-        padding: 0 2em 0.5em 1em;
+        padding: 0 1em 0.5em 1em;
         display: flex;
         justify-content: space-between;
     `;
-    const header_ul_st = css`
+const header_ul = css`
         padding: 0;
         margin: 0;
         height: 100%;
@@ -26,7 +40,6 @@ export default function Header() {
             margin: 0;
         }
         a {
-            font-size: 1.25em;
             position: relative;
             color: #60545c;
             text-decoration: none;
@@ -42,7 +55,7 @@ export default function Header() {
             background: #000;
             transform: scaleX(0);
             transform-origin: left;
-            transition: transform 0.5s ease;
+            transition: transform 0.35s ease;
         }
         a:hover {
             color: #000;
@@ -52,16 +65,3 @@ export default function Header() {
             transform: scaleX(1);
         }
     `;
-
-    return (
-        <header css={headerstyle}>
-            <h1>LLwyct <span role="img" aria-label="welcome">😜</span></h1>
-            <nav>
-                <ul css={header_ul_st}>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/about">About</Link></li>
-                </ul>
-            </nav>
-        </header>
-    )
-}
