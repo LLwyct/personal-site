@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'gatsby';
 import {css} from '@emotion/react';
 import styled from '@emotion/styled';
 import Pill from './Pill';
@@ -19,13 +20,16 @@ export default function Card(props) {
             transform: translateY(-10px);
         }
     `;
+    const labels = props.labelstr.split('&');
     return (
         <div css={cardstyle}>
-            <h3>{props.title}</h3>
+            <h3><Link to="/">{props.title}</Link></h3>
             <PillList>
-                <Pill value="Algorithm" />
-                <Pill value="刷题" />
-                <Pill value="日常" />
+                {
+                    labels.map(lb => {
+                        return <Pill value={lb} key={lb}/>
+                    })
+                }
             </PillList>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, natus perferendis! Harum, molestias iusto! Similique.</p>
         </div>

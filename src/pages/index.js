@@ -1,10 +1,12 @@
 import React from "react"
-import { Link } from "gatsby";
+import { Link, graphql } from "gatsby";
 import Layout from "../components/Layout";
 import { css } from "@emotion/react";
 import Card from '../components/Card';
 
-export default function Home() {
+export default function Home({ data }) {
+
+    const lastedArticles = data?.allMarkdownRemark?.nodes;
     const selfintro = css`
         text-align: center;
         height: 400px;
@@ -31,11 +33,33 @@ export default function Home() {
                     <p style={{ fontWeight: 400 }}> <Link to="/"> READ MORE</Link></p>
                 </div>
                 <div>
-                    <Card title="lorem"></Card>
-                    <Card title="lorem"></Card>
-                    <Card title="lorem"></Card>
+                    {
+                        lastedArticles.map(article => {
+                            return <Card 
+                                title={article.frontmatter.title}
+                                key={article.id}
+                                labelstr={article.frontmatter.label}
+                                date={article.frontmatter.date}
+                            />
+                        })
+                    }
                 </div>
             </section>
         </Layout>
     )
 }
+
+export const query = graphql`
+    query MyQuery {
+        allMarkdownRemark {
+            nodes {
+                frontmatter {
+                    title
+                    date
+                    label
+                }
+                id
+            }
+        }
+    }
+`;
