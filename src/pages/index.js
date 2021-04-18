@@ -8,10 +8,15 @@ export default function Home({ data }) {
 
     const lastedArticles = data?.allMarkdownRemark?.nodes;
     const selfintro = css`
-        text-align: center;
-        height: 400px;
-        display: flex;
-        align-items: center;
+      text-align: center;
+      padding: 6em 0;
+      display: flex;
+      align-items: center;
+      @media only screen and (max-width: 640px) {
+        & {
+          padding: 3em 0;
+        }
+      }
     `;
 
     const articlelist_header = css`
@@ -35,6 +40,7 @@ export default function Home({ data }) {
                 <div>
                     {
                         lastedArticles.map(article => {
+                            console.log(article.id);
                             return <Card 
                                 title={article.frontmatter.title}
                                 key={article.id}
@@ -50,16 +56,19 @@ export default function Home({ data }) {
 }
 
 export const query = graphql`
-    query MyQuery {
-        allMarkdownRemark {
-            nodes {
-                frontmatter {
-                    title
-                    date
-                    label
-                }
-                id
-            }
+  query {
+    allMarkdownRemark(
+      sort: { fields: frontmatter___date, order: DESC }
+      limit: 5
+    ) {
+      nodes {
+        frontmatter {
+          date
+          label
+          title
         }
+        id
+      }
     }
+  }
 `;

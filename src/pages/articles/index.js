@@ -5,7 +5,6 @@ import Layout from '../../components/Layout';
 
 
 export default function index({data}) {
-    console.log(data);
     const allArticles = data?.allMarkdownRemark?.nodes;
     return (
         <Layout>
@@ -28,16 +27,18 @@ export default function index({data}) {
 
 
 export const allArticles = graphql`
-    query {
-        allMarkdownRemark {
-            nodes {
-                frontmatter {
-                    title
-                    date
-                    label
-                }
-                id
-            }
+  query {
+    allMarkdownRemark(
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
+      nodes {
+        frontmatter {
+          date
+          label
+          title
         }
+        id
+      }
     }
+  }
 `;
