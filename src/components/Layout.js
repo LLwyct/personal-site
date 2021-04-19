@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from './Header';
+import Footer from './Footer';
 import { css } from '@emotion/react';
 
 export default function Layout({children}) {
@@ -16,6 +17,7 @@ export default function Layout({children}) {
             <main css={contentstyle}>
                 {children}
             </main>
+            <Footer></Footer>
         </>
     )
 }

@@ -38,7 +38,7 @@ export default function ArticleDetail({ data }) {
           })}
         </PillList>
         <p css={datestyle}>{date}</p>
-        <p css={headline}> · 正文 ·</p>
+        <p css={headline}>· · ·  正文 · · ·</p>
         <section
           dangerouslySetInnerHTML={{ __html }}
           className="markdown-body"

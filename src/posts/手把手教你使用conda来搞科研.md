@@ -4,6 +4,17 @@ date: "2020-12-11 17:21:09"
 label: "科研&conda"
 ---
 
+- [准备](#准备)
+- [注意](#注意)
+- [安装Anaconda3](#安装anaconda3)
+- [conda常用命令](#conda常用命令)
+  - [1. conda create -n \<name> python=<3.x>](#1-conda-create--n-name-python3x)
+  - [2. conda activate <name\>](#2-conda-activate-name)
+  - [3. conda install <name[=version]>](#3-conda-install-nameversion)
+  - [4. conda list](#4-conda-list)
+  - [5. conda info -e](#5-conda-info--e)
+  - [6. conda uninstall pkgname](#6-conda-uninstall-pkgname)
+
 与普通的python学习者不同，搞科研可能需要在许多不同的python环境下进行编码，因此我使用Anaconda3进行python的环境管理，一开始还不太会用，觉得很弱智，在学长指导一番后，发现用法和npm很像，很好上手。
 
 # 准备

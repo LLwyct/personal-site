@@ -4,7 +4,20 @@ import { css } from '@emotion/react';
 
 
 export default function Header() {
-    const emojiList = ['😘','😛','🤣','😁','😜','😝','😲','🤪','🤠','🤡','😅'];
+    const emojiList = ['😘','😛','🤣','😁','😜','😝','😲','🤪','🤠','🤡', '🎅','🤞','👀','🧡','💛','💖'];
+
+    const btn = React.useRef('dark');
+
+    const toggleDarkMode = () => {
+        if (document.documentElement.hasAttribute("theme")) {
+            document.documentElement.removeAttribute("theme");
+            btn.current.innerHTML = 'dark'
+            return;
+        }
+        document.documentElement.setAttribute("theme", "dark-mode");
+        btn.current.innerHTML = 'light'
+    }
+
     return (
         <header css={headerstyle}>
             <h1>LLwyct <span role="img" aria-label="welcome" id="header_emoji">{emojiList[Math.floor(Math.random()*(emojiList.length))]}</span></h1>
@@ -13,6 +26,13 @@ export default function Header() {
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">About</Link></li>
                     <li><Link to="/articles">Articles</Link></li>
+                    <li>
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <button onClick={toggleDarkMode} css={colormodebtn} ref={btn}>
+                                    dark
+                                </button>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </header>
@@ -22,13 +42,19 @@ export default function Header() {
 const headerstyle = css`
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 1em 0.5em 1em;
+  padding: 0 1em 1em 1em;
   display: flex;
   justify-content: space-between;
 
+  #header_emoji {
+      font-size: 0.75em;
+  }
   @media only screen and (max-width: 480px) {
     #header_emoji {
         display: none;
+    }
+    li + li {
+        margin-left: 0.5em;
     }
   }
 `;
@@ -72,4 +98,16 @@ const header_ul = css`
             color: #000;
             transform: scaleX(1);
         }
+        a:active {
+            color: #000;
+        }
     `;
+
+const colormodebtn = css`
+    padding: 3px 5px;
+    background-color: transparent;
+    border: 2px solid;
+    cursor: pointer;
+    width: 65px;
+    outline: none;
+`;

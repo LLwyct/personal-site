@@ -13,10 +13,11 @@ export default function index({data}) {
                 {
                     allArticles.map(article => {
                         return <Card
-                            title={article.frontmatter.title}
-                            key={article.id}
-                            labelstr={article.frontmatter.label}
-                            date={article.frontmatter.date}
+                          title={article.frontmatter.title}
+                          key={article.id}
+                          labelstr={article.frontmatter.label}
+                          date={article.frontmatter.date}
+                          excerpt={article.excerpt}
                         />
                     })
                 }
@@ -32,6 +33,7 @@ export const allArticles = graphql`
       sort: { fields: frontmatter___date, order: DESC }
     ) {
       nodes {
+        excerpt(pruneLength: 120)
         frontmatter {
           date
           label

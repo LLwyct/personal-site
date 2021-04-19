@@ -12,6 +12,7 @@ export default function Home({ data }) {
       padding: 6em 0;
       display: flex;
       align-items: center;
+      justify-content: center;
       @media only screen and (max-width: 640px) {
         & {
           padding: 3em 0;
@@ -30,22 +31,22 @@ export default function Home({ data }) {
     return (
         <Layout>
             <section css={selfintro}>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias minima culpa ratione dolores incidunt ipsam mollitia? Aperiam quasi nisi dignissimos? Amet quod quos quas eaque ipsa non molestiae quo rerum quidem! Repellendus saepe a, ab alias ipsum minima, obcaecati aliquam neque pariatur delectus tempore libero!
+          Hello, this is my blog, welcome to visit. I am currently a graduate student in computer science. I will share my learning and work experience here, and occasionally talk about my daily life and share my mood in life.
             </section>
             <section>
                 <div css={articlelist_header}>
                     <h2 style={{}}> <span role="img" aria-label="here">🎈</span> Latest Article</h2>
-                    <p style={{ fontWeight: 400 }}> <Link to="/"> READ MORE</Link></p>
+                    <p style={{ fontWeight: 400 }}> <Link to="/articles"> READ MORE</Link></p>
                 </div>
                 <div>
                     {
                         lastedArticles.map(article => {
-                            console.log(article.id);
                             return <Card 
                                 title={article.frontmatter.title}
                                 key={article.id}
                                 labelstr={article.frontmatter.label}
                                 date={article.frontmatter.date}
+                              excerpt={article.excerpt}
                             />
                         })
                     }
@@ -62,6 +63,7 @@ export const query = graphql`
       limit: 5
     ) {
       nodes {
+        excerpt(pruneLength: 120)
         frontmatter {
           date
           label

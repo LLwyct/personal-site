@@ -5,13 +5,15 @@ import styled from '@emotion/styled';
 import Pill from './Pill';
 
 export default function Card(props) {
+  console.log(props);
     const cardstyle = css`
         transition: all 0.35s ease;
         padding: 0.4em 1.5em;
         border-radius: 10px;
         &:hover {
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
-            transform: translateY(-10px);
+          background-image: repeating-linear-gradient(-20deg, #e9defa 0%, #fbfcdbaa 100%);
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+          transform: translateY(-10px);
         }
     `;
     const date = css`
@@ -24,8 +26,8 @@ export default function Card(props) {
         margin-left: 15px;
       }
     `;
+    console.log(props.labelstr);
     const labels = props.labelstr.split('&');
-    console.log(encodeURIComponent(props.title));
     return (
       <div css={cardstyle}>
         <h3 style={{ marginBottom: "12px" }}>
@@ -38,8 +40,7 @@ export default function Card(props) {
           })}
         </PillList>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur,
-          natus perferendis! Harum, molestias iusto! Similique.
+          {props.excerpt}
         </p>
         <p css={date}>{props.date}</p>
       </div>

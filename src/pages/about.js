@@ -4,10 +4,14 @@ import Layout from '../components/Layout';
 export default function about() {
     return (
         <Layout>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam minima doloremque est libero, voluptatem esse labore nam at nostrum, cupiditate reprehenderit quibusdam saepe voluptate culpa accusantium hic blanditiis nemo? Unde vero perspiciatis qui, magni itaque eligendi quia dolorum cum totam consectetur non blanditiis accusantium suscipit iusto nam saepe ipsum ducimus?</p>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, deserunt quidem amet iure ad provident ipsam dolorum. Praesentium perspiciatis necessitatibus odio sapiente minus perferendis vero. Laudantium rem itaque quas ducimus ad est repudiandae voluptatum reprehenderit fugit reiciendis animi commodi sint blanditiis sapiente, natus asperiores nam incidunt explicabo maiores dolorem a facere illo ratione aliquam. Repellat doloribus, excepturi aperiam magnam illo quod, dolorum ab quidem aliquid odio molestias, quisquam voluptatum! Possimus!
-            </p>
+            <section style={{lineHeight: '1.85em'}}>
+                <p style={{display: 'inline-block'}}>
+                    Hello, this is my blog, welcome to visit. I am currently a graduate student in computer science. I will share my study and work experience here, and occasionally talk about my daily life and share my mood in life.
+                </p>
+                <p>
+                    My postgraduate major is the formal verification of neural networks. And I have implemented a simple <a href="https://github.com/LLwyct/FFNN-Verify" target="blank" rel="noreferrer" style={{textDecoration: 'underline'}}>neural network verification tool</a> on my github using an optimization algorithm based on MILP. I want to work in front-end development in the future, because I think front-end development is a very interesting thing. You can quickly see the pages you make, and you can add your aesthetics and show your thoughts to others.
+                </p>
+            </section>
         </Layout>
     )
 }
