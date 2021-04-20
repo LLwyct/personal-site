@@ -5,7 +5,6 @@ import styled from '@emotion/styled';
 import Pill from './Pill';
 
 export default function Card(props) {
-  console.log(props);
     const cardstyle = css`
         transition: all 0.35s ease;
         padding: 0.4em 1.5em;
@@ -26,7 +25,6 @@ export default function Card(props) {
         margin-left: 15px;
       }
     `;
-    console.log(props.labelstr);
     const labels = props.labelstr.split('&');
     return (
       <div css={cardstyle}>

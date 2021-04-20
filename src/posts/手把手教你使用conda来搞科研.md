@@ -59,3 +59,4 @@ conda install keras=2.0
 查看有哪些环境？有时候会忘了自己的环境名
 
 ## 6. conda uninstall pkgname
+卸载包
