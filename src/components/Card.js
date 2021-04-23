@@ -29,17 +29,20 @@ export default function Card(props) {
     return (
       <div css={cardstyle}>
         <h3 style={{ marginBottom: "12px" }}>
-            
-          <Link to={"/articles/" + encodeURIComponent(props.title)}>{props.title}</Link>
+          <Link
+            to={"/articles/" + encodeURIComponent(props.title)}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {props.title}
+          </Link>
         </h3>
         <PillList>
           {labels.map((lb) => {
             return <Pill value={lb} key={lb} />;
           })}
         </PillList>
-        <p>
-          {props.excerpt}
-        </p>
+        <p>{props.excerpt}</p>
         <p css={date}>{props.date}</p>
       </div>
     );

@@ -253,7 +253,7 @@
 .markdown-body code,
 .markdown-body pre {
   font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
-  font-size: 0.9em;
+  font-size: 0.9em !important;
 }
 
 .markdown-body pre {
