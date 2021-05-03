@@ -1,0 +1,14 @@
+body {
+    --background-color: #fcfbfa;
+    --text-color: black;
+    --card-background-color: #fff;
+    transition: all 0.35s ease-out;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+body.dark {
+    --card-background-color: #5d5d5d;
+    --background-color: #333;
+    --text-color: white;
+}

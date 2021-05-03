@@ -61,7 +61,6 @@
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   line-height: 1.5;
-  color: #24292e;
   font-family: Poppins, -apple-system,BlinkMacSystemFont,Segoe UI, 微软雅黑, Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
   font-size: 1em;
   line-height: 1.5;
@@ -131,7 +130,7 @@
 }
 
 .markdown-body a {
-  color: #0366d6;
+  color: #64a9f7;
   text-decoration: none;
 }
 
@@ -725,6 +724,7 @@
 }
 
 .markdown-body table {
+  color:#24292e;
   display: block;
   width: 100%;
   overflow: auto;

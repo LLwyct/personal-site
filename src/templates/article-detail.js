@@ -78,7 +78,7 @@ const PillList = styled.div`
 `;
 
 const headline = css`
-  color: #6a737d66;
+  color: #6a737d;
   font-size: 0.9em;
   text-align: center;
 `;
@@ -95,7 +95,6 @@ const fixedScroller = css`
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.5s ease;
   @media only screen and (max-width: 640px) {
     & {
       bottom: 2em;

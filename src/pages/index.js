@@ -28,6 +28,17 @@ export default function Home({ data }) {
             text-decoration: underline;
         }
     `;
+
+    React.useEffect(() => {
+      let colorMode = localStorage.getItem("b0ee67a4b84e9f55");
+      if (colorMode) {
+        const colorSwitchBtn = document.getElementById("colorswitch");
+        if (colorSwitchBtn) {
+          colorSwitchBtn.innerText = colorMode == "dark" ? "light" : "dark";
+        }
+        document.body.classList.add(colorMode.toString())
+      }
+    }, []);
     return (
         <Layout>
             <section css={selfintro}>

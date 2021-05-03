@@ -9,13 +9,14 @@ export default function Header() {
     const btn = React.useRef('dark');
 
     const toggleDarkMode = () => {
-        if (document.documentElement.hasAttribute("theme")) {
-            document.documentElement.removeAttribute("theme");
-            btn.current.innerHTML = 'dark'
+        document.body.classList.toggle('dark');
+        if (document.body.classList.contains("dark")) {
+            localStorage.setItem("b0ee67a4b84e9f55", "dark");
+            btn.current.innerHTML = 'light';
             return;
         }
-        document.documentElement.setAttribute("theme", "dark-mode");
-        btn.current.innerHTML = 'light'
+        localStorage.setItem("b0ee67a4b84e9f55", "light");
+        btn.current.innerHTML = 'dark';
     }
 
     return (
@@ -28,7 +29,12 @@ export default function Header() {
                     <li><Link to="/articles">Articles</Link></li>
                     <li>
                         <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <button onClick={toggleDarkMode} css={colormodebtn} ref={btn}>
+                                <button
+                                    onClick={toggleDarkMode}
+                                    css={colormodebtn}
+                                    ref={btn}
+                                    id="colorswitch"
+                                    >
                                     dark
                                 </button>
                         </div>
@@ -59,55 +65,55 @@ const headerstyle = css`
   }
 `;
 const header_ul = css`
-        padding: 0;
-        margin: 0;
-        height: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: flex-end;
-        li + li {
-            margin-left: 1.5em;
-        }
-        li {
-            list-style: none;
-            margin: 0;
-        }
-        a {
-            position: relative;
-            color: #60545c;
-            text-decoration: none;
-            transition: color 0.5s ease;
-        }
-        a::after {
-            position: absolute;
-            content: "";
-            height: 3px;
-            width: 100%;
-            bottom: -3px;
-            left: 0;
-            background: #000;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.35s ease;
-        }
-        a:hover {
-            color: #000;
-        }
-        a:hover::after {
-            color: #000;
-            transform: scaleX(1);
-        }
-        a:active {
-            color: #000;
-        }
-    `;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  li + li {
+    margin-left: 1.5em;
+  }
+  li {
+    list-style: none;
+    margin: 0;
+  }
+  a {
+    position: relative;
+    color: var(--text-color);
+    text-decoration: none;
+  }
+  a::after {
+    position: absolute;
+    content: "";
+    height: 3px;
+    width: 100%;
+    bottom: -3px;
+    left: 0;
+    background-color: var(--text-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+  a:hover {
+    color: var(--text-color);
+  }
+  a:hover::after {
+    color: ;
+    transform: scaleX(1);
+  }
+  a:active {
+    color: var(--text-color);
+  }
+`;
 
 const colormodebtn = css`
-    padding: 3px 5px;
-    background-color: transparent;
-    border: 2px solid;
-    cursor: pointer;
-    width: 65px;
-    outline: none;
+  padding: 3px 5px;
+  background-color: transparent;
+  color: var(--text-color);
+  border: 2px solid var(--text-color);
+  cursor: pointer;
+  width: 65px;
+  outline: none;
 `;
