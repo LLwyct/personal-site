@@ -44,7 +44,10 @@ export default function Card(props) {
           })}
         </PillList>
         <p>{props.excerpt}</p>
-        <p css={date}>{props.date}</p>
+        <p css={date}>
+          {props.date}
+          &nbsp;&nbsp;&nbsp;&nbsp;阅读量: {props.timeToRead}
+        </p>
       </div>
     );
 }

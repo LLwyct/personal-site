@@ -4,6 +4,7 @@ import { css } from '@emotion/react';
 import styled from "@emotion/styled";
 import Pill from '../components/Pill';
 import { graphql } from 'gatsby';
+import "katex/dist/katex.min.css";
 
 function searchHeader(body, headerList) {
   if (['H1', 'H2', 'H3', 'H4', 'H5', 'H6'].includes(body.tagName)) {
@@ -20,12 +21,15 @@ function searchHeader(body, headerList) {
 
 export default function ArticleDetail({ data }) {
 
-  const { title, label, date } = data.markdownRemark?.frontmatter;
+  const { title, label, date, autonav } = data.markdownRemark?.frontmatter;
   const __html = data.markdownRemark?.html;
+  const timeToRead = data.markdownRemark?.timeToRead;
   const labels = label.split("&");
   
+
   // 模拟的是Didmounted
   React.useEffect(() => {
+    if (!autonav) return;
     const headerList = [];
     const markdownBody = document.querySelector(".markdown-body");
     const markdownNavLinkContent = document.querySelector(".markdown-body ul:first-child");
@@ -48,19 +52,30 @@ export default function ArticleDetail({ data }) {
 
   return (
     <Layout>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
+        async
+      ></script>
       <h3>{title}</h3>
       <PillList>
         {labels.map((lb) => {
           return <Pill value={lb} key={lb} />;
         })}
       </PillList>
-      <p css={datestyle}>{date}</p>
-      <p css={headline}>· · ·  正文 · · ·</p>
-      <section
-        dangerouslySetInnerHTML={{ __html }}
-        className="markdown-body"
-      ></section>
-      <div css={fixedScroller} onClick={scrollToTop}>TOP</div>
+      <p css={datestyle}>
+        <span>{date}</span>
+        <span style={{marginLeft: "2rem"}}>阅读量: {timeToRead}</span>
+      </p>
+      <p css={headline}>· · · 正文 · · ·</p>
+      <div>
+        <section
+          dangerouslySetInnerHTML={{ __html }}
+          className="markdown-body"
+        ></section>
+      </div>
+      <div css={fixedScroller} onClick={scrollToTop}>
+        TOP
+      </div>
     </Layout>
   );
 }
@@ -91,14 +106,14 @@ const fixedScroller = css`
   position: fixed;
   bottom: 5em;
   right: 5em;
-  background: #00000055;
+  background: #00000022;
   display: flex;
   justify-content: center;
   align-items: center;
   @media only screen and (max-width: 640px) {
     & {
       bottom: 2em;
-      right: 2em; 
+      right: 2em;
     }
   }
 `;
@@ -111,7 +126,9 @@ export const query = graphql`
         title
         label
         date
+        autonav
       }
+      timeToRead
     }
   }
 `;

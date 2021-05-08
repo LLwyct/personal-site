@@ -12,37 +12,55 @@ export default function Header() {
         document.body.classList.toggle('dark');
         if (document.body.classList.contains("dark")) {
             localStorage.setItem("b0ee67a4b84e9f55", "dark");
-            btn.current.innerHTML = 'light';
+            btn.current.innerText = 'light';
             return;
         }
         localStorage.setItem("b0ee67a4b84e9f55", "light");
-        btn.current.innerHTML = 'dark';
+        btn.current.innerText = "dark";
     }
-
+    let colorMode = localStorage.getItem("b0ee67a4b84e9f55");
+    if (colorMode) {
+      colorMode = colorMode === "dark" ? "light" : "dark";
+    } else {
+      colorMode = "dark";
+    }
     return (
-        <header css={headerstyle}>
-            <h1>LLwyct <span role="img" aria-label="welcome" id="header_emoji">{emojiList[Math.floor(Math.random()*(emojiList.length))]}</span></h1>
-            <nav>
-                <ul css={header_ul}>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/about">About</Link></li>
-                    <li><Link to="/articles">Articles</Link></li>
-                    <li>
-                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <button
-                                    onClick={toggleDarkMode}
-                                    css={colormodebtn}
-                                    ref={btn}
-                                    id="colorswitch"
-                                    >
-                                    dark
-                                </button>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-    )
+      <header css={headerstyle}>
+        <h1 style={{cursor: "pointer"}}>
+          <Link to="/">
+            LLwyct{" "}
+            <span role="img" aria-label="welcome" id="header_emoji">
+              {emojiList[Math.floor(Math.random() * emojiList.length)]}
+            </span>
+          </Link>
+        </h1>
+        <nav>
+          <ul css={header_ul}>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/articles">Articles</Link>
+            </li>
+            <li>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <button
+                  onClick={toggleDarkMode}
+                  css={colormodebtn}
+                  ref={btn}
+                  id="colorswitch"
+                >
+                  {colorMode}
+                </button>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    );
 }
 
 const headerstyle = css`

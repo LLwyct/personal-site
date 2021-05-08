@@ -20,6 +20,13 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
+              strict: `warn`,
+            },
+          },
+          {
             resolve: `gatsby-remark-prismjs`,
             options: {
               classPrefix: "language-",
@@ -28,7 +35,7 @@ module.exports = {
               // setting this to '{ sh: "bash" }' will let you use
               // the language "sh" which will highlight using the
               // bash highlighter.
-              aliases: {js: "javascript"},
+              aliases: { js: "javascript" },
               // This toggles the display of line numbers globally alongside the code.
               // To use it, add the following line in gatsby-browser.js
               // right after importing the prism color scheme:

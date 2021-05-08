@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import { Link, graphql } from "gatsby";
 import Layout from "../components/Layout";
 import { css } from "@emotion/react";
@@ -29,41 +29,34 @@ export default function Home({ data }) {
         }
     `;
 
-    React.useEffect(() => {
-      let colorMode = localStorage.getItem("b0ee67a4b84e9f55");
-      if (colorMode) {
-        const colorSwitchBtn = document.getElementById("colorswitch");
-        if (colorSwitchBtn) {
-          colorSwitchBtn.innerText = colorMode == "dark" ? "light" : "dark";
-        }
-        document.body.classList.add(colorMode.toString())
-      }
-    }, []);
     return (
-        <Layout>
-            <section css={selfintro}>
-          Hello, this is my blog, welcome to visit. I am currently a graduate student in computer science. I will share my learning and work experience here, and occasionally talk about my daily life and share my mood in life.
-            </section>
-            <section>
-                <div css={articlelist_header}>
-                    <h2 style={{}}> <span role="img" aria-label="here">🎈</span> Latest Article</h2>
-                    <p style={{ fontWeight: 400 }}> <Link to="/articles"> READ MORE</Link></p>
-                </div>
-                <div>
-                    {
-                        lastedArticles.map(article => {
-                            return <Card 
-                                title={article.frontmatter.title}
-                                key={article.id}
-                                labelstr={article.frontmatter.label}
-                                date={article.frontmatter.date}
+      <Layout>
+          <section css={selfintro}>
+        Hello, this is my blog, welcome to visit. I am currently a graduate student in computer science. I will share my learning and work experience here, and occasionally talk about my daily life and share my mood in life.
+          </section>
+          <section>
+              <div css={articlelist_header}>
+                  <h2 style={{}}> <span role="img" aria-label="here">🎈</span> Latest Article</h2>
+                  <p style={{ fontWeight: 400 }}> <Link to="/articles"> READ MORE</Link></p>
+              </div>
+              <div>
+                  {
+                      lastedArticles.map(article => {
+                          return (
+                            <Card
+                              title={article.frontmatter.title}
+                              key={article.id}
+                              labelstr={article.frontmatter.label}
+                              date={article.frontmatter.date}
                               excerpt={article.excerpt}
+                              timeToRead={article.timeToRead}
                             />
-                        })
-                    }
-                </div>
-            </section>
-        </Layout>
+                          );
+                      })
+                  }
+              </div>
+          </section>
+      </Layout>
     )
 }
 
@@ -80,6 +73,7 @@ export const query = graphql`
           label
           title
         }
+        timeToRead
         id
       }
     }

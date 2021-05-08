@@ -12,13 +12,16 @@ export default function index({data}) {
             <div>
                 {
                     allArticles.map(article => {
-                        return <Card
-                          title={article.frontmatter.title}
-                          key={article.id}
-                          labelstr={article.frontmatter.label}
-                          date={article.frontmatter.date}
-                          excerpt={article.excerpt}
-                        />
+                        return (
+                          <Card
+                            title={article.frontmatter.title}
+                            key={article.id}
+                            labelstr={article.frontmatter.label}
+                            date={article.frontmatter.date}
+                            excerpt={article.excerpt}
+                            timeToRead={article.timeToRead}
+                          />
+                        );
                     })
                 }
             </div>
@@ -40,6 +43,7 @@ export const allArticles = graphql`
           title
         }
         id
+        timeToRead
       }
     }
   }
