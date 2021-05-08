@@ -18,14 +18,16 @@ export default function Header() {
         localStorage.setItem("b0ee67a4b84e9f55", "light");
         btn.current.innerText = "dark";
     }
-    if (window) {
-      let colorMode = localStorage.getItem("b0ee67a4b84e9f55");
-      if (colorMode) {
-        colorMode = colorMode === "dark" ? "light" : "dark";
-      } else {
-        colorMode = "dark";
+    React.useEffect(() => {
+      if (window) {
+        let colorMode = localStorage.getItem("b0ee67a4b84e9f55");
+        if (colorMode) {
+          colorMode = colorMode === "dark" ? "light" : "dark";
+        } else {
+          colorMode = "dark";
+        }
       }
-    }
+    }, []);
     return (
       <header css={headerstyle}>
         <h1 style={{cursor: "pointer"}}>
