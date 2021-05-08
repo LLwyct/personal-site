@@ -10,7 +10,8 @@ export default function Layout({children}) {
         margin: 0 auto;
         padding: 0 1em;
     `;
-    let colorMode = localStorage.getItem("b0ee67a4b84e9f55");
+    let colorMode = (window.localStorage || localStorage).getItem("b0ee67a4b84e9f55");
+    
     if (colorMode) {
     const colorSwitchBtn = document.getElementById("colorswitch");
     if (colorSwitchBtn) {
