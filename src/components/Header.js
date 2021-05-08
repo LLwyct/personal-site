@@ -26,6 +26,7 @@ export default function Header() {
         } else {
           colorMode = "dark";
         }
+        btn.innerText = colorMode;
       }
     }, []);
     return (
@@ -57,7 +58,7 @@ export default function Header() {
                   ref={btn}
                   id="colorswitch"
                 >
-                  {colorMode}
+                  "light"
                 </button>
               </div>
             </li>
