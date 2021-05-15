@@ -958,6 +958,55 @@
   vertical-align: middle;
 }
 
+/* block code css start*/
+:not(pre) > code[class*="language-"] {
+	background: #f8e4e4 !important;
+  color: #c72544 !important;
+}
+body.dark :not(pre) > code[class*="language-"] {
+	background: #676767 !important;
+  color: #eee !important;
+}
+
+pre[class*="language-"] {
+	background: #f5f5f5 !important;
+  color: #333 !important;
+}
+
+body.dark code[class*="language-"],
+body.dark pre[class*="language-"] {
+	background: #222 !important;
+  color: #ddd !important;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+	text-shadow: none !important;
+}
+
+span.token.constant {
+  color: #DD4A68;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #333 !important;
+  background: none !important;
+}
+
+body.dark .token.operator,
+body.dark .token.entity,
+body.dark .token.url,
+body.dark .language-css .token.string,
+body.dark .style .token.string {
+	color: #eee !important;
+  background: none !important;
+}
+
+/* end */
 @media only screen and (max-width: 640px) {
   .markdown-body h1 {
     font-size: 2.6rem;

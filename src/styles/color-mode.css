@@ -1,13 +1,15 @@
 body {
-    --background-color: #fcfbfa;
+    --background-color: ##f8f6f7;
     --text-color: black;
     --card-background-color: #fff;
+    --Suspension-bg-color: #00000022;
     transition: all 0.35s ease-out;
     background-color: var(--background-color);
     color: var(--text-color);
 }
 
 body.dark {
+    --Suspension-bg-color: #6545ff96;
     --card-background-color: #5d5d5d;
     --background-color: #333;
     --text-color: white;

@@ -106,7 +106,7 @@ const fixedScroller = css`
   position: fixed;
   bottom: 5em;
   right: 5em;
-  background: #00000022;
+  background: var(--Suspension-bg-color);
   display: flex;
   justify-content: center;
   align-items: center;

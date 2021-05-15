@@ -19,14 +19,14 @@ export default function Header() {
         btn.current.innerText = "dark";
     }
     React.useEffect(() => {
-      if (window) {
+      if (window && btn) {
         let colorMode = localStorage.getItem("b0ee67a4b84e9f55");
         if (colorMode) {
           colorMode = colorMode === "dark" ? "light" : "dark";
         } else {
           colorMode = "dark";
         }
-        btn.innerText = colorMode;
+        // btn.innerText = colorMode;
       }
     }, []);
     return (
