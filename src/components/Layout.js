@@ -12,6 +12,7 @@ export default function Layout({children}) {
     `;
 
     React.useEffect(() => {
+        
         if (window) {
             let colorMode = localStorage.getItem("b0ee67a4b84e9f55");
             if (colorMode) {
@@ -33,4 +34,12 @@ export default function Layout({children}) {
             <Footer></Footer>
         </>
     )
+}
+const ASDASD = 1;
+class A {
+    // 
+}
+
+for (let i=0;i<10;++i) {
+
 }

@@ -1,0 +1,63 @@
+body.dark .markdown-body pre[class*="language-"] {
+  background-color: #222;
+}
+
+body.dark :not(pre) > code[class*="language-"] {
+    background: #4e4e4e;
+    color: #eee;
+}
+
+:not(pre) > code[class*="language-"] {
+    background: #f8e4e4;
+    color: #c72544;
+}
+
+
+
+.token.comment {
+    color: #929391;
+}
+
+.token.keyword {
+    color: #8805ba;
+}
+.token.function {
+    color: #a41d26;
+}
+.token.string {
+    color: #3f7f1b;
+}
+.token.parameter {
+    color: #0772cc;
+}
+.token.constant {
+    color: #0772cc;
+}
+.token.class-name {
+    color: #007218;
+}
+.token.number {
+    color: #724d00;
+}
+body.dark .token.comment {
+    color: #82bc69;
+}
+
+body.dark .token.keyword {
+    color: #5a9cd3;
+}
+body.dark .token.function {
+    color: #e8eb94;
+}
+body.dark .token.string {
+    color: #eeb353;
+}
+body.dark .token.parameter {
+    color: #44aaff;
+}
+body.dark .token.constant {
+    color: #44aaff;
+}
+body.dark .token.class-name {
+    color: #92ffa9;
+}

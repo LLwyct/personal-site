@@ -20,7 +20,7 @@ label: "react&gatsby"
 
 # 安装gatsby
 我一般会顺手安装一个emotion，真的好用。
-```
+```bash
 cnpm install -g gatsby-cli
 gatsby new <project-name> <starter>
 gatsby new emotion-tutorial https://github.com/gatsbyjs/gatsby-starter-hello-world

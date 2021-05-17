@@ -959,7 +959,8 @@
 }
 
 /* block code css start*/
-:not(pre) > code[class*="language-"] {
+
+/* :not(pre) > code[class*="language-"] {
 	background: #f8e4e4 !important;
   color: #c72544 !important;
 }
@@ -1004,7 +1005,7 @@ body.dark .language-css .token.string,
 body.dark .style .token.string {
 	color: #eee !important;
   background: none !important;
-}
+} */
 
 /* end */
 @media only screen and (max-width: 640px) {
