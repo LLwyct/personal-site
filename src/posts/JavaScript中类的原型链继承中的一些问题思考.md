@@ -42,10 +42,11 @@ cat.eat("fish");
 
 但是这里的原型链继承中，使用了这种覆盖的方法。经测试，`Cat.prototype.constructor === Animal`。这就比较能看出来问题了。我个人理解是，`F`的`prototype`是`animal`对象，而其上是没有`constructor`的，所以去`animal`的原型上找，而animal的原型上的`constructor`就是`Animal`函数。所以我还是比较不太喜欢这种方法的。
 
+而且这种方法有一个致命的缺点，就是如果父类的属性是引用类型，由于父类的实例赋值给了子类的原型属性，因此引用类型会共享，一个改动，其他跟着一起变。
 
 ## 1.2 构造继承
 
-> 使用父类的构造函数来增强子类实例，等于是复制父类的实例属性给子类（没有用到原型）。
+> 使用父类的构造函数来**增强**子类实例，等同于复制父类的实例给子类（没有用到原型）。
 
 ```js
 function Cat(name) {
@@ -60,7 +61,10 @@ cat.eat("fish");
 // > Uncaught TypeError: cat.eat is not a function
 ```
 
-> 特点，可以实现多继承。缺点：**只能继承父类实例的属性和方法，不能继承原型上的属性和方法**。
+> 特点，可以实现多继承。
+> 缺点：**只能继承父类实例的属性和方法，不能继承父类原型上的属性和方法**。每个子类都有父类实例函数的副本，影响性能。
+
+核心代码是 `Animal.call(this)`，创建子类实例时调用父类构造函数，于是子类的每个实例都会将SuperType中的属性复制一份。
 
 我的理解，这种方法实际上没有用到原型，因为这里是用的`Animal()`函数去执行。所以，相当于借用Animal去创建了一个cat实例，而cat对象是没有原型链的。因此 `cat.__proto__.__proto__ === Object.prototype`。否则，应该是 `cat.__proto__.__proto__ === Animal.prototype`。
 
@@ -85,7 +89,13 @@ cat.eat("fish");// mimi eating fish
 先说原型链继承，从名字就可以听出来，这种继承方法是有原型链在里面的，因此解决了构造继承中没有原型的问题，然后可以看到与构造继承相比，主动声明了Cat的原型，并且在原型链继承的基础上主动插入了被覆盖的构造函数constructor。
 
 特点：可以继承实例属性/方法，也可以继承原型属性/方法。
-缺点：调用了两次父类构造函数，生成了两份实例。
+
+缺点：
+
+- 第一次调用new Animal()：给Animal.prototype写入属性name。
+- 第二次调用new Cat("mimi")：给cat写入属性name。
+
+实例对象cat上的属性就屏蔽了其原型对象Cat.prototype的同名属性。所以，组合模式的缺点就是在使用子类创建实例对象时，其原型中会存在两份相同的属性/方法。
 
 ## 1.5 寄生组合继承
 
@@ -96,12 +106,15 @@ function Cat (name) {
 	Animal.call(this);
 	this.name = name || 'Tom';
 }
-function Cat (name) {
-	Animal.call(this);
-	this.name = name || 'Tom';
-}
 
 Cat.prototype = Object.create(Animal.prototype);
+
+// 如果在老版本中可以使用如下代码替换Object.create()
+let Super = function () {};
+Super.prototype = Animal.prototype;
+Cat.prototype = new Super();
+//
+
 Cat.prototype.constructor = Cat;
 
 let cat = new Cat("mimi");
@@ -109,4 +122,6 @@ cat.sleep(); // mimi is sleeping
 cat.eat("fish");// mimi eating fish
 ```
 
-可以看到这里用了一个空的函数在中间作为传递者，在组合继承中，当我们创建第一个cat实例时，它的原型就会创建一个Animal实例，由于Animal有可能内部有很多东西，那么就会需要很大内存，但其实这里是不需要的，因此这里使用一个空的函数作为中间传递者，这样创建cat实例的时候，就只需要一个空函数对象，节约了内存的。
+这是最成熟的方法，也是现在库实现的方法
+
+可以看到这里用了一个空的函数在中间作为传递者，在组合继承中，子类Cat的原型就会创建一个Animal实例，由于Animal有可能内部有很多东西，那么就会需要很大内存，但其实这里是不需要的，因此这里使用一个空的函数作为中间传递者，这样创建cat实例的时候，就只需要一个空函数对象，节约了内存的。
