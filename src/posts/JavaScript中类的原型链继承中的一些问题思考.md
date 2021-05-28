@@ -10,6 +10,8 @@ label: "JavaScript&原型继承"
   - [1.3 实例继承、拷贝继承](#13-实例继承拷贝继承)
   - [1.4 组合继承](#14-组合继承)
   - [1.5 寄生组合继承](#15-寄生组合继承)
+- [2 instanceof](#2-instanceof)
+- [3 isPrototypeOf](#3-isprototypeof)
 
 # 1 继承
 
@@ -42,7 +44,7 @@ cat.eat("fish");
 
 但是这里的原型链继承中，使用了这种覆盖的方法。经测试，`Cat.prototype.constructor === Animal`。这就比较能看出来问题了。我个人理解是，`F`的`prototype`是`animal`对象，而其上是没有`constructor`的，所以去`animal`的原型上找，而animal的原型上的`constructor`就是`Animal`函数。所以我还是比较不太喜欢这种方法的。
 
-而且这种方法有一个致命的缺点，就是如果父类的属性是引用类型，由于父类的实例赋值给了子类的原型属性，因此引用类型会共享，一个改动，其他跟着一起变。
+而且这种方法有一个致命的缺点，就是如果父类的属性是引用类型，由于将父类的实例置给了子类的原型，因此不同的子类实例会使用同一个原型，引用类型会共享，一个改动，其他跟着一起变。
 
 ## 1.2 构造继承
 
@@ -109,7 +111,7 @@ function Cat (name) {
 
 Cat.prototype = Object.create(Animal.prototype);
 
-// 如果在老版本中可以使用如下代码替换Object.create()
+// Object.create's polyfill
 let Super = function () {};
 Super.prototype = Animal.prototype;
 Cat.prototype = new Super();
@@ -125,3 +127,20 @@ cat.eat("fish");// mimi eating fish
 这是最成熟的方法，也是现在库实现的方法
 
 可以看到这里用了一个空的函数在中间作为传递者，在组合继承中，子类Cat的原型就会创建一个Animal实例，由于Animal有可能内部有很多东西，那么就会需要很大内存，但其实这里是不需要的，因此这里使用一个空的函数作为中间传递者，这样创建cat实例的时候，就只需要一个空函数对象，节约了内存的。
+
+
+# 2 instanceof
+
+判断class的原型是否在obj的原型链上
+
+```js
+obj instanceof class
+```
+# 3 isPrototypeOf
+从名字就可以看出来用于判断前者是否是后者的原型链上的原型
+
+```js
+Function.prototype.isPrototypeOf(obj)
+Child.prototype.isPrototypeOf(child1)
+Parent.prototype.isPrototypeOf(child1)
+```
