@@ -2,6 +2,7 @@
 title: "JavaScript中类的原型链继承中的一些问题思考"
 date: "2021-05-25 22:02:00"
 label: "JavaScript&原型继承"
+autonav: 1
 ---
 
 - [1 继承](#1-继承)
