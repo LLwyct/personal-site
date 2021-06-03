@@ -5,7 +5,6 @@ import { css } from '@emotion/react';
 
 export default function Header(props) {
     const emojiList = ['😘','😛','🤣','😁','😜','😝','😲','🤪','🤠','🤡', '🎅','🤞','👀','🧡','💛','💖'];
-    let btnValue = props.colorMode;
     const buttonValue = {
       "dark": "light",
       "light": "dark"
@@ -13,9 +12,12 @@ export default function Header(props) {
     const btn = React.useRef('dark');
     const toggleDarkMode = () => {
       document.body.classList.toggle('dark');
-      localStorage.setItem("b0ee67a4b84e9f55", buttonValue[btnValue]);
-      btnValue = btnValue === "dark" ? "light" : "dark";
-      btn.current.innerHTML = buttonValue[btnValue];
+      localStorage.setItem(
+        "b0ee67a4b84e9f55",
+        buttonValue[localStorage.getItem("b0ee67a4b84e9f55")]
+      );
+      btn.current.innerHTML =
+        buttonValue[localStorage.getItem("b0ee67a4b84e9f55")];
     }
 
     return (
@@ -47,7 +49,7 @@ export default function Header(props) {
                   ref={btn}
                   id="colorSwitchBtn"
                 >
-                  {buttonValue[props.colorMode]}
+                  {buttonValue[localStorage.getItem("b0ee67a4b84e9f55")]}
                 </button>
               </div>
             </li>
