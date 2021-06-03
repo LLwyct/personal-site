@@ -50,7 +50,7 @@ export default function Header(props) {
                   ref={btn}
                   id="colorSwitchBtn"
                 >
-                  {buttonValue[localStorage.getItem("b0ee67a4b84e9f55")]}
+                  &nbsp;
                 </button>
               </div>
             </li>
