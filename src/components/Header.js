@@ -11,7 +11,6 @@ export default function Header(props) {
     }
     let [nextColorMode, setNextColorMode] = React.useState(buttonValue[props.colorMode]);
     const btn = React.useRef('dark');
-
     const toggleDarkMode = () => {
       document.body.classList.toggle('dark');
       localStorage.setItem("b0ee67a4b84e9f55", nextColorMode);
