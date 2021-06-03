@@ -9,15 +9,16 @@ export default function Header(props) {
       "dark": "light",
       "light": "dark"
     }
-    const btn = React.useRef('dark');
-    const toggleDarkMode = () => {
-      document.body.classList.toggle('dark');
-      localStorage.setItem(
-        "b0ee67a4b84e9f55",
-        buttonValue[localStorage.getItem("b0ee67a4b84e9f55")]
-      );
-      btn.current.innerHTML =
-        buttonValue[localStorage.getItem("b0ee67a4b84e9f55")];
+    const btn = React.useRef();
+    React.useEffect(() => {
+      console.log(document.body.dataset.colormode);
+      btn.current.innerText = buttonValue[document.body.dataset.colormode];
+    }, []);
+
+    function toggleDarkMode () {
+      document.body.classList.toggle("dark");
+      localStorage.setItem("b0ee67a4b84e9f55", btn.current.innerText);
+      btn.current.innerText = buttonValue[btn.current.innerText];
     }
 
     return (

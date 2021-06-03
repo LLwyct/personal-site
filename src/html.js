@@ -17,12 +17,16 @@ export default function HTML(props) {
         <script
           dangerouslySetInnerHTML={{
             __html: `
-                let colorMode = localStorage.getItem("b0ee67a4b84e9f55");
-                if (colorMode === "dark") {
+                let globalColorMode = localStorage.getItem("b0ee67a4b84e9f55");
+                if (globalColorMode === "dark") {
                     document.body.classList.add("dark");
-                } else if (colorMode !== "light") {
+                    document.body.setAttribute("data-colormode", "dark");
+                } else if (globalColorMode !== "light") {
                     setTimeout(() => document.body.classList.add("dark"), 1500);
                     localStorage.setItem("b0ee67a4b84e9f55", "dark");
+                    document.body.setAttribute("data-colormode", "dark");
+                } else {
+                  document.body.setAttribute("data-colormode", "light");
                 }
             `,
           }}
