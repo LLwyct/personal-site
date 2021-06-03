@@ -3,35 +3,24 @@ import { Link } from 'gatsby'
 import { css } from '@emotion/react';
 
 
-export default function Header() {
+export default function Header(props) {
     const emojiList = ['😘','😛','🤣','😁','😜','😝','😲','🤪','🤠','🤡', '🎅','🤞','👀','🧡','💛','💖'];
-
+    const buttonValue = {
+      "dark": "light",
+      "light": "dark"
+    }
+    let [nextColorMode, setNextColorMode] = React.useState(buttonValue[props.colorMode]);
     const btn = React.useRef('dark');
 
     const toggleDarkMode = () => {
-        document.body.classList.toggle('dark');
-        if (document.body.classList.contains("dark")) {
-            localStorage.setItem("b0ee67a4b84e9f55", "dark");
-            btn.current.innerText = 'light';
-            return;
-        }
-        localStorage.setItem("b0ee67a4b84e9f55", "light");
-        btn.current.innerText = "dark";
+      document.body.classList.toggle('dark');
+      localStorage.setItem("b0ee67a4b84e9f55", nextColorMode);
+      setNextColorMode(buttonValue[nextColorMode]);
     }
-    React.useEffect(() => {
-      if (window && btn) {
-        let colorMode = localStorage.getItem("b0ee67a4b84e9f55");
-        if (colorMode) {
-          colorMode = colorMode === "dark" ? "light" : "dark";
-        } else {
-          colorMode = "dark";
-        }
-        // btn.innerText = colorMode;
-      }
-    }, []);
+
     return (
       <header css={headerstyle}>
-        <h1 style={{cursor: "pointer"}}>
+        <h1 style={{ cursor: "pointer" }}>
           <Link to="/">
             LLwyct{" "}
             <span role="img" aria-label="welcome" id="header_emoji">
@@ -56,9 +45,9 @@ export default function Header() {
                   onClick={toggleDarkMode}
                   css={colormodebtn}
                   ref={btn}
-                  id="colorswitch"
+                  id="colorSwitchBtn"
                 >
-                  "light"
+                  {nextColorMode}
                 </button>
               </div>
             </li>
