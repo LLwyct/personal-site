@@ -18,13 +18,21 @@ export default function HTML(props) {
           dangerouslySetInnerHTML={{
             __html: `
                 let globalColorMode = localStorage.getItem("b0ee67a4b84e9f55");
+                window.colorTheme = {
+                  color: "light"
+                }
                 if (globalColorMode === "dark") {
+                    window.colorTheme.color = "dark";
                     document.body.classList.add("dark");
                     document.body.setAttribute("data-colormode", "dark");
                 } else if (globalColorMode !== "light") {
-                    setTimeout(() => document.body.classList.add("dark"), 1500);
-                    localStorage.setItem("b0ee67a4b84e9f55", "dark");
-                    document.body.setAttribute("data-colormode", "dark");
+                  localStorage.setItem("b0ee67a4b84e9f55", "light");
+                    setTimeout(() => {
+                      window.colorTheme.color = "dark";
+                      localStorage.setItem("b0ee67a4b84e9f55", "dark");
+                      document.body.setAttribute("data-colormode", "dark");
+                      document.body.classList.add("dark");
+                    }, 1500);
                 } else {
                   document.body.setAttribute("data-colormode", "light");
                 }

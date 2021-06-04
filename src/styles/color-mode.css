@@ -14,3 +14,12 @@ body.dark {
     --background-color: #333;
     --text-color: white;
 }
+
+
+body .svg-container{
+    transform: rotate(180deg);
+    transition: transform 0.5s ease-out;
+}
+body.dark .svg-container{
+    transform: rotate(0deg);
+}
