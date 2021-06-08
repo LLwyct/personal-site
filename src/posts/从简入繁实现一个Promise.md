@@ -2,6 +2,7 @@
 title: "从简入繁实现一个Promise"
 date: "2021-05-11 21:20:43"
 label: "Javascript&ES6&手写实现"
+autonav: 1
 ---
 
 从简入繁实现一个Promise, [Reference from zhihu](https://zhuanlan.zhihu.com/p/183801144)

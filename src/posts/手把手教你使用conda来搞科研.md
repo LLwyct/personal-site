@@ -2,6 +2,7 @@
 title: "手把手教你使用conda来搞科研"
 date: "2020-12-11 17:21:09"
 label: "科研&conda"
+autonav: 1
 ---
 
 - [准备](#准备)
