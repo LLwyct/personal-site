@@ -1,0 +1,2 @@
+(self.webpackChunkgatsby_starter_hello_world=self.webpackChunkgatsby_starter_hello_world||[]).push([[883],{9616:function(t,e,l){"use strict";l.r(e),l.d(e,{default:function(){return a}});l(7294);var r=l(1474),n=l(3431);function a(){return(0,n.tZ)(r.Z,null,(0,n.tZ)("div",{style:{textAlign:"center"}},"The Page doesn't exist ",(0,n.tZ)("span",{role:"img","aria-label":"sad"},"😢")))}}}]);
+//# sourceMappingURL=component---src-pages-404-js-dd6ace5da25b139896e6.js.map
