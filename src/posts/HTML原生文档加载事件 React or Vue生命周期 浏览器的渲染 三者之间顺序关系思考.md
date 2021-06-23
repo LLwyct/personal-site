@@ -1,5 +1,5 @@
 ---
-title: "HTML原生文档加载事件 React&Vue生命周期 浏览器的渲染 三者之间顺序关系思考"
+title: "HTML原生文档加载事件 React or Vue生命周期 浏览器的渲染 三者之间顺序关系思考"
 date: "2021-06-14 16:27:00"
 label: "前端&浏览器&React&Vue"
 autonav: 1
