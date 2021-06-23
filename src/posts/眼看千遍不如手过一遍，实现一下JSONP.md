@@ -1,5 +1,5 @@
 ---
-title: "HTML原生文档加载事件 React or Vue生命周期 浏览器的渲染 三者之间顺序关系思考"
+title: "眼看千遍不如手过一遍，实现一下JSONP"
 date: "2021-06-23 20:21:00"
 label: "手写实现&跨域"
 autonav: 1
